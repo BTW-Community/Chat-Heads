@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "id": "chat_heads",
-  "version": "1.0.0",
-  "name": "Chat Heads",
+  "id": "${mod_id}",
+  "version": "${version}+BTW-${btw_version}",
+  "name": "${name}",
   "description": "See who you're chatting with!",
   "authors": [
     "DraViGen, inspired by dzwdz"

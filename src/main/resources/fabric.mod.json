@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "id": "chat_heads",
+  "version": "1.0.0",
+  "name": "Chat Heads",
+  "description": "See who you're chatting with!",
+  "authors": [
+    "DraViGen, inspired by dzwdz"
+  ],
+  "contact": {
+    "homepage": "",
+    "sources": "https://github.com/BTW-Community/Chat-Heads"
+  },
+  "license": "MPL-2.0 license",
+  "icon": "assets/chat_heads/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "btw:addon": [
+      "net.dravigen.chat_heads.ChatHeads"
+    ]
+  },
+  "custom": {
+    "btw:addon_prefix": "EX"
+  },
+  "mixins": [
+    "ChatHeads.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.14.19",
+    "minecraft": "1.6.4"
+  }
+}

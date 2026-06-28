@@ -52,7 +52,9 @@ public class ChatHeads extends BTWAddon {
 		
 		gui.zLevel += 100.0f;
 		gui.drawTexturedModalRect(0, 0, 32, 32, 32, 32);
-		gui.zLevel -= 100.0f;
+		gui.zLevel += 10.0f;
+		gui.drawTexturedModalRect(0, 0, 160, 32, 32, 32);
+		gui.zLevel -= 110.0f;
 		
 		GL11.glPopMatrix();
 	}

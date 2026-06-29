@@ -24,24 +24,44 @@ public abstract class GuiNewChatMx extends Gui {
 		boolean b3 = (s.startsWith("[") || s.startsWith("<")) && b2;
 		boolean b4 = s.startsWith("[") && !b2 && s.contains("[") && s.contains("]");
 		
-		int offset = 2;
+		int offset = 1;
 		
 		if (b3 || b4) {
 			try {
+				int xStart = 0;
 				String nickname = b3 ? s.split(">")[0].split("<")[1] : b4 ? s.split("]")[0].split("\\[")[1] : s;
+				String prefix = "<";
+				String msg = s;
 				
 				if (s.startsWith("[") && b2) {
 					String nameInBracket = s.split("]")[0].split("\\[")[1];
 					
 					if (playerNames.contains(nameInBracket)) {
 						nickname = nameInBracket;
+						prefix = "\\[";
+						xStart = instance.getStringWidth(prefix);
+						msg = s.split(prefix)[1];
 					}
+					else {
+						msg = s.split("<")[1];
+						xStart = instance.getStringWidth(s.split("<")[0]);
+					}
+				}
+				else if (s.startsWith("[") ) {
+					prefix = "\\[";
+					xStart = instance.getStringWidth("[");
+					msg = s.split(prefix)[1];
+				}
+				else if (s.startsWith("<")) {
+					msg = s.split("<")[1];
+					xStart = instance.getStringWidth("<");
 				}
 				
 				if (playerNames.contains(nickname)) {
-					ChatHeads.drawPlayerHead(this, offset, y, nickname, (float) (color >> 24 & 0xFF) / 255.0f);
+					ChatHeads.drawPlayerHead(this, offset + xStart, y, nickname, (float) (color >> 24 & 0xFF) / 255.0f);
 					
-					return instance.drawStringWithShadow(s, x + 10 + offset, y, color);
+					instance.drawStringWithShadow(prefix.replace("\\", ""), x, y, color);
+					return instance.drawStringWithShadow(msg, x + 10 + offset + xStart, y, color);
 					
 				}
 			} catch (Exception ignored) {
